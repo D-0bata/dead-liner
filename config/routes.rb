@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'hello_world', to: 'hello_world#index'
   root "users#current_or_guest_user"
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
