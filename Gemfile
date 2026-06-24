@@ -46,6 +46,12 @@ gem "devise"
 # A drop-in guest user implementation for devise [https://github.com/cbeer/devise-guests]
 gem "devise-guests"
 
+# Use webpack to manage app-like JavaScript modules in Rails [https://github.com/shakacode/shakapacker]
+gem "shakapacker"
+
+# Rails with react server rendering with webpack [https://github.com/shakacode/react_on_rails]
+gem "react_on_rails"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
