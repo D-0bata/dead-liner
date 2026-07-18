@@ -67,6 +67,9 @@ group :development, :test do
 
   # A testing framework [https://github.com/rspec/rspec-rails/]
   gem "rspec-rails"
+
+  # A fixtures replacement [https://github.com/thoughtbot/factory_bot_rails]
+  gem "factory_bot_rails"
 end
 
 group :development do
