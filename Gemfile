@@ -76,3 +76,14 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 end
+
+group :test do
+  # An integration test framework for web applications [https://github.com/teamcapybara/capybara]
+  gem "capybara"
+
+  # A helper for launching cross-platform applications in a fire and forget manner [https://github.com/copiousfreetime/launchy]
+  gem "launchy"
+
+  # A browser automation framework [https://github.com/seleniumhq/selenium]
+  gem "selenium-webdriver"
+end
