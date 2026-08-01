@@ -8,3 +8,69 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+ @charset "UTF-8";
+
+body {
+    background-color: #f2f2f8;
+}
+
+.task-list {
+    width: 100%;
+    max-width: 1088px;
+    margin: auto;
+    padding: 0 1.5rem;
+    border-spacing: 0;
+    border-radius: 30px;
+    background-color: #ffffff;
+}
+.task-list th,
+.task-list td {
+    border-bottom: 1px solid #f2f2f8;
+}
+.task-list th {
+    padding: 1rem;
+}
+.task-list td {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.new-task {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.task-form {
+    width: 600px;
+    margin: 0 auto;
+}
+
+label {
+    width: 90%;
+    max-width: 600px;
+    margin: 10px;
+    padding: 15 0 0px;
+    font-size: 15px;
+    color:#434343;
+    background-clip: padding-box;
+    box-sizing: border-box;
+}
+
+input {
+  width: 90%;
+  max-width: 600px;
+  margin: 10px;
+  padding: 15px;
+  font-size: 15px;
+  color:#434343;
+  border: 1px solid #f2f2f8;
+  border-radius: 10px;
+  background: #ffffff;
+  background-clip: padding-box;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+    color:#ffffff;
+    background: #434343;
+}
