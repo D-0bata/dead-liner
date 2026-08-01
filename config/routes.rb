@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
-  root "users#current_or_guest_user"
+  root "tasks#index"
 
   devise_for :users
-  resources :tasks
+  resources :tasks, except: %i[ show ] do
+    collection do
+      get :timer
+      get :reset_timer
+      get :done_all
+    end
+    get :done, on: :member
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
