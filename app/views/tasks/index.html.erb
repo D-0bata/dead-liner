@@ -1,2 +1,81 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
+<h1>Deadliner</h1>
+
+<%= react_component("Clock") %>
+
+<table class="task-list">
+  <tr>
+    <th>No.</th>
+    <th>Tasks</th>
+    <th>Deadlines</th>
+    <th>Remaining Times</th>
+    <th>
+      <% if @user.total_tasks_count > 0 %>
+        <% if @user.total_tasks_count == @user.done_tasks_count %>
+          <%= link_to image_tag("check_box.svg", alt: "check_box"), done_all_tasks_path, data: { turbo_confirm: "Uncheck this box?" } %>
+        <% else %>
+          <%= link_to image_tag("check_box_outline_blank.svg", alt: "check_box_outline_blank"), done_all_tasks_path, data: { turbo_confirm: "Check this box?" } %>
+        <% end %>
+      <% end %>
+    </th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% working_task_order = @user.working_task_order %>
+  <% total_remaining_time = 0 %>
+
+  <% @user.tasks.each do |task| %>
+    <tr>
+      <td>
+        <%= task.task_order %>
+      </td>
+      <td>
+        <%= task.task_name %>
+      </td>
+      <td>
+        <% if working_task_order > 0 %>
+          <% if task.done_flag %>
+            --:--
+          <% else %>
+            <% total_remaining_time += task.task_time - task.elapsed_task_time %>
+            <%= react_component("Deadline", props: {totalRemainingTime: total_remaining_time}) %>
+          <% end %>
+        <% else %>
+          --:--
+        <% end %>
+      </td>
+      <td>
+        <%= react_component("Timer", props: {initTaskTime: task.task_time, initTimerFlag: task.timer_flag, elapsedTaskTime: task.elapsed_task_time}) %>
+      </td>
+      <td>
+        <%= form_with(model: task) do |f| %>
+          <% if task.done_flag %>
+            <%= link_to image_tag("check_box.svg", alt: "check_box"), done_task_path(task), data: { turbo_confirm: "Uncheck this box?" } %>
+          <% else %>
+            <%= link_to image_tag("check_box_outline_blank.svg", alt: "check_box_outline_blank"), done_task_path(task), data: { turbo_confirm: "Check this box?" } %>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to image_tag("edit.svg", alt: "_edit"), edit_task_path(task) %>
+      </td>
+      <td>
+        <%= link_to image_tag("delete.svg", alt: "_delete"), task, data: { turbo_method: "delete" } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<div class="new-task">
+  <%= link_to image_tag("add_circle.svg", alt: "add_circle"), new_task_path %>
+</div>
+
+<div>
+  <% if working_task_order > 0 %>
+    <%= link_to image_tag("timer_stop.svg", alt: "timer_stop"), timer_tasks_path, data: { turbo_confirm: "Stop a timer?" } %>
+  <% else %>
+    <%= link_to image_tag("timer_start.svg", alt: "timer_start"), timer_tasks_path, data: { turbo_confirm: "Start a timer?" } %>
+  <% end %>
+
+  <%= link_to image_tag("timer_reset.svg", alt: "timer_reset"), reset_timer_tasks_path, data: { turbo_confirm: "Reset a timer?" } %>
+</div>
