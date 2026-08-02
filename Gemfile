@@ -46,6 +46,12 @@ gem "devise"
 # A drop-in guest user implementation for devise [https://github.com/cbeer/devise-guests]
 gem "devise-guests"
 
+# Use webpack to manage app-like JavaScript modules in Rails [https://github.com/shakacode/shakapacker]
+gem "shakapacker"
+
+# Rails with react server rendering with webpack [https://github.com/shakacode/react_on_rails]
+gem "react_on_rails"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -61,9 +67,23 @@ group :development, :test do
 
   # A testing framework [https://github.com/rspec/rspec-rails/]
   gem "rspec-rails"
+
+  # A fixtures replacement [https://github.com/thoughtbot/factory_bot_rails]
+  gem "factory_bot_rails"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+end
+
+group :test do
+  # An integration test framework for web applications [https://github.com/teamcapybara/capybara]
+  gem "capybara"
+
+  # A helper for launching cross-platform applications in a fire and forget manner [https://github.com/copiousfreetime/launchy]
+  gem "launchy"
+
+  # A browser automation framework [https://github.com/seleniumhq/selenium]
+  gem "selenium-webdriver"
 end
