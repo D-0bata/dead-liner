@@ -45,3 +45,6 @@ yarn-debug.log*
 **/generated/**
 ssr-generated
 .env
+
+# Ignore automatically generated files by macOS.
+.DS_Store
