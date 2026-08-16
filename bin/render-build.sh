@@ -4,7 +4,7 @@
 set -o errexit
 
 bundle install
-bin/rails assets:precompile
+RAILS_ENV=production NODE_ENV=production bin/rails assets:precompile
 bin/rails assets:clean
 
 # If you have a paid instance type, we recommend moving
