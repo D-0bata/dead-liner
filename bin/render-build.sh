@@ -4,6 +4,7 @@
 set -o errexit
 
 bundle install
+npm install
 RAILS_ENV=production NODE_ENV=production bin/rails assets:precompile
 bin/rails assets:clean
 
